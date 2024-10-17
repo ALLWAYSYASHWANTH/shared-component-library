@@ -1,0 +1,41 @@
+{
+  "name": "@allwaysyashwanth/shared-component-library",
+  "version": "0.0.2",
+  "description": "An shared component library",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": "git://github.com/ALLWAYSYASHWANTH/shared-component-library.git",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "version:bump": "tsc ./scripts/versionBump.ts && node ./scripts/versionBump.js",
+    "build": "npm run version:bump && rimraf -rf dist && prettier --write src/ && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Excelsoft",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.25.7",
+    "@babel/core": "^7.25.8",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.25.8",
+    "@types/node": "^22.7.5",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "jsonfile": "^6.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rimraf": "^6.0.1"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
